@@ -13,7 +13,7 @@
                             <h3 class="text-center">Contenido</h3>
                             @php
                                 $cantidad_personas=0;
-                                foreach ($persona as $p) {
+                                foreach ($personas as $p) {
                                     $cantidad_personas++;
                                 }
                                 $cantidad_usuarios=0;
@@ -22,7 +22,7 @@
                                 }
 
                                 $monto=0;
-                                foreach ($persona as $per) {
+                                foreach ($personas as $per) {
                                     $monto+=$per->monto;
                                 }
                             @endphp

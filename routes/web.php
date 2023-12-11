@@ -31,7 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/', WelcomeController::class);
 Route::post('/welcome-show', [WelcomeController::class, 'show'])->name('welcome-show');
 
-//Auth::routes();
+Auth::routes();
 
 Route::group(['middleware' => ['auth']], function(){
     Route::resource('roles', RolController::class);
