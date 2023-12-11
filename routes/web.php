@@ -9,7 +9,7 @@ use App\Http\Controllers\ExcelImportController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PaymentsController;
-
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +28,10 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::resource('/', WelcomeController::class);
+Route::post('/welcome-show', [WelcomeController::class, 'show'])->name('welcome-show');
+
+//Auth::routes();
 
 Route::group(['middleware' => ['auth']], function(){
     Route::resource('roles', RolController::class);

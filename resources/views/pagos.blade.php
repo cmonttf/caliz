@@ -44,32 +44,23 @@
                 </div>
             @endif
 
-            <div class="row">
-                <div class="col">
-                    <p style="font-size: 100px; font-weight: bold;">Bienvenidos al Pago del 1%</p>
-                    <span>Este dinero va directamente a las arcas de nuestra parroquia, por lo tanto es vital tu aporte mensual.</span>
-                    <div class="container mt-5">
-                        <h2 class="text-center">Buscador de Nombres</h2>
-                        <div class="row">
-                            <div class="col-md-6 offset-md-3">
-                                <form action="{{ route('welcome-show') }}" method="POST">
-                                    @csrf
-                                    <div class="input-group mb-3">
-                                        <select name="id" id="id" class="form-control">
-                                            @foreach ($personas as $persona)
-                                                <option value="{{ $persona->id }}">{{ $persona->nombres . " " . $persona->apellidos }}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="submit" id="searchButton">Buscar</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+            <div class="card card-sm-6">
+                <h5 class="card-header">PAGOS</h5>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="">Nombre:</label>
+                        <input type="text" value="{{ $persona->nombres . ' ' . $persona->apellidos}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Monto:</label>
+                        <input type="text" value="${{ $persona->monto }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success">Pagar</button>
                     </div>
                 </div>
             </div>
+            <footer><a href="{{ url('/') }}">Volver</a></footer>
         </div>
     </body>
 </html>

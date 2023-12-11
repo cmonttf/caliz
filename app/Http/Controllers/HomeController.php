@@ -25,8 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $persona = Person::all();
+        $personas = Person::all();
         $usuario = User::all();
-        return view('home', compact('persona', 'usuario'));
+        return view('home', compact('personas', 'usuario'));
+    }
+
+    public function show($id){
+        $person = Person::find($id);
+
+        return view('pagos', compact('person'));
     }
 }
