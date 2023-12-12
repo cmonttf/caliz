@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('fecha_pago');
             $table->string('metodo');
             $table->string('gestor');
+            $table->tinyInteger('status')->comment('1: pendiente. 2: Aprobada.')->default(1);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('persons')->onDelete('cascade');

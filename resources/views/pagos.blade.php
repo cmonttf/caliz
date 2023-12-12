@@ -44,23 +44,9 @@
                 </div>
             @endif
 
-            <div class="card card-sm-6">
-                <h5 class="card-header">PAGOS</h5>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="">Nombre:</label>
-                        <input type="text" value="{{ $persona->nombres . ' ' . $persona->apellidos}}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Monto:</label>
-                        <input type="text" value="${{ $persona->monto }}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success">Pagar</button>
-                    </div>
-                </div>
+            <div class="main-content">
+                @yield('content')
             </div>
-            <footer><a href="{{ url('/') }}">Volver</a></footer>
         </div>
     </body>
 </html>

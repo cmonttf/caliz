@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransbankController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/iniciar_compra', [TransbankController::class, 'iniciar_compra']);
+Route::post('/confirmar_pago', [TransbankController::class, 'confirmar_pago'])->name('confirmar_pago');

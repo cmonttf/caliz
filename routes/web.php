@@ -10,6 +10,7 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\TransbankController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/', WelcomeController::class);
 Route::post('/welcome-show', [WelcomeController::class, 'show'])->name('welcome-show');
+//Route::post('/redirigir', [WelcomeController::class, 'redirigir']);
+
 
 Auth::routes();
 
