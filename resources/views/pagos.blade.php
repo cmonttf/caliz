@@ -12,7 +12,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-        <title>Laravel</title>
+        <title>Caliz | Parroquia San Juan de Mata</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,24 +29,55 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Inicio</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Iniciar Sesión</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="/img/4043ac5e-7b26-47bd-badb-d161a501697e.png" alt="" style="width: 75px" class="align-middle">
+                    <span class="align-middle mr-2 text-white">Parroquia San Juan de Mata</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        @if (Route::has('login'))
+                            @auth
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{{ url('/home') }}">Inicio</a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{{ route('login') }}">Iniciar sesión</a>
+                                </li>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrar</a>
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="{{ route('register') }}">Registrar</a>
+                                    </li>
+                                @endif
+                            @endauth
                         @endif
-                    @endauth
+                    </ul>
                 </div>
-            @endif
-
-            <div class="main-content">
-                @yield('content')
+            </div>
+        </nav>
+        <div class="container-fluid bg-light pt-4 pb-4">
+            <div class="container mt-4">
+                <div class="jumbotron">
+                    @yield('content')
+                </div>
             </div>
         </div>
+
+        <footer class="bg-dark text-white py-4">
+            <div class="container text-center">
+                <p>&copy; {{ date('Y') }} Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+
+        <!-- Bootstrap JS (opcional, si lo necesitas) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
 </html>

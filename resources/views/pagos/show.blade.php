@@ -38,6 +38,10 @@
                                             <input class="form-control" type="text" value="{{ $pago->gestor }}" readonly>
                                         </div>
                                         <div class="form-group">
+                                            <label for="">Estado:</label>
+                                            <input class="form-control" type="text" value="{{ $pago->status == 2 ? 'Aprobado' : 'Rechazado' }}" readonly>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="">Fecha de ingreso:</label>
                                             <input class="form-control" type="text" value="{{ $pago->created_at }}" readonly>
                                         </div>

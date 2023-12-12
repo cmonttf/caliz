@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Transbank\Webpay\WebpayPlus;
 use Transbank\Webpay\WebpayPlus\Transaction;
 use App\Models\Pago;
+use App\Models\Cobro;
+
 
 class TransbankController extends Controller
 {
@@ -15,20 +17,30 @@ class TransbankController extends Controller
                 env('webpayplus_cc'),
                 env('webpay_plus_api_key')
             );
+        } else {
+            WebpayPlus::configureForTesting();
         }
     }
 
     public function iniciar_compra(Request $request){
-        $nueva_compra = new Pago();
-        $nueva_compra->user_id=$request->input('user_id');
-        $nueva_compra->monto=$request->input("monto");
-        $nueva_compra->fecha_pago=date('Y-m-d');
-        $nueva_compra->metodo='Electrónico';
-        $nueva_compra->gestor='WebPay';
-        $nueva_compra->save();
-        $url_to_pay = self::start_web_pay_plus_transaction( $nueva_compra );
 
-        return $url_to_pay;
+
+
+        $user_id = $request->input('user_id');
+        if($user_id !== null){
+            $nueva_compra = new Pago();
+            $nueva_compra->user_id=$request->input('user_id');
+            $nueva_compra->monto=$request->input("total");
+            $nueva_compra->fecha_pago=date('Y-m-d');
+            $nueva_compra->metodo='Electrónico';
+            $nueva_compra->gestor='WebPay';
+            $nueva_compra->save();
+            $url_to_pay = self::start_web_pay_plus_transaction( $nueva_compra );
+
+            return redirect($url_to_pay);
+        }else{
+            return response()->json([ 'respuesta'=>'No se ha podido realizar la compra, por favor intentelo nuevamente.']);
+        }
     }
 
     public function start_web_pay_plus_transaction( $nueva_compra ){
@@ -48,15 +60,20 @@ class TransbankController extends Controller
         $confirmacion = (new Transaction)->commit( $request->get('token_ws') );
 
         $pago = Pago::where('id', $confirmacion->buyOrder)->first();
-        dd($pago->user_id);
+        $cobro = Cobro::where('user_id', $pago->user_id);
 
         if( $confirmacion->isApproved() ){
             $pago->status = 2;
             $pago->update();
 
-            return redirect( env('URL_FRONTEND_AFTER_PAYMENT')."?pago_id={$pago->id}");
+            $cobro->update(['pagado' => true]);
+
+
+            $pago = Pago::find($pago->id);
+            return view('transaccion.show', compact('pago'));
         }else{
-            return redirect( env('URL_FRONTEND_AFTER_PAYMENT')."?pago_id={$pago->id}" );
+            $pago = Pago::find($pago->id);
+            return view('transaccion.show', compact('pago'));
         }
     }
 }

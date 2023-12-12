@@ -29,6 +29,7 @@
                                         <th style="color: #ffff;">Monto</th>
                                         <th style="color: #ffff;">Fecha de Pago</th>
                                         <th style="color: #ffff;">Gestor</th>
+                                        <th style="color: #ffff;">Estado</th>
                                         <th style="color: #ffff;">Acciones</th>
                                     </tr>
                                 </thead>
@@ -48,6 +49,7 @@
                                             <td>${{ $pago->monto }}</td>
                                             <td>{{ $pago->fecha_pago }}</td>
                                             <td>{{ $pago->gestor }}</td>
+                                            <td>{{ $pago->status == 2 ? 'Aprobado' : 'Rechazado' }}</td>
                                             <td>
 
                                                 @can('ver-pagos')

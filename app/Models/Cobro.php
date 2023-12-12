@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pago extends Model
+class Cobro extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'monto', 'fecha_pago', 'metodo', 'gestor', 'status',
+        'mes', 'anio', 'monto', 'pagado', 'user_id',
     ];
 
     // Relación con el modelo User
-    public function person()
+    public function cobro()
     {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(Cobro::class);
     }
+
 }

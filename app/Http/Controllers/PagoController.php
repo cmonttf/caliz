@@ -31,10 +31,10 @@ class PagoController extends Controller
             'fecha_pago' => 'required|date',
         ]);
 
-        //$pago = Auth::user()->pagos()->create($request->all());
-
-        //return redirect()->route('pagos.index')->with('success', 'Pago registrado exitosamente.');
-        Pago::create($request->all());
+        $data = $request->all();
+        $data['status'] = 2; // Establecer el estado como 2
+        
+        Pago::create($data);
         return redirect()->route('pagos.index');
     }
 
