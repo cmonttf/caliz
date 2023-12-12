@@ -11,6 +11,7 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\TransbankController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------

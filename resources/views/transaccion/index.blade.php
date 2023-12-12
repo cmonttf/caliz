@@ -12,7 +12,13 @@
                 <div class="card">
                     <div class="card-body">
                         <form action="{{ url('/api/iniciar_compra') }}" method="POST">
-                            <input type="text" hidden name="id" value="{{ $persona->id }}">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input type="text" readonly name="user_id" value="{{ $persona->id }}">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">

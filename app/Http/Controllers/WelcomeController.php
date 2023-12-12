@@ -20,8 +20,4 @@ class WelcomeController extends Controller
         return view('transaccion.index', compact('persona'));
     }
 
-    public function create(){
-        return view('transaccion.create');
-    }
-
 }
