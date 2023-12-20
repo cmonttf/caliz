@@ -25,5 +25,10 @@
             <i class="material-icons">payments</i><span>Pagos</span>
         </a>
     @endcan
+    @can('ver-cobros')
+        <a class="nav-link" href="/cobros">
+            <i class="material-icons">request_quote</i><span>Cobros</span>
+        </a>
+    @endcan
 
 </li>

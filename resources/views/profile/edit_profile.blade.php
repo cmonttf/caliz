@@ -1,3 +1,5 @@
+
+
 <div id="EditProfileModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
@@ -58,4 +60,3 @@
         </div>
     </div>
 </div>
-

@@ -46,6 +46,12 @@ class SeederPermisos extends Seeder
                 'crear-pagos',
                 'editar-pagos',
                 'borrar-pagos',
+
+                //cobros
+                'ver-cobros',
+                'crear-cobros',
+                'editar-cobros',
+                'borrar-cobros',
             ];
 
             foreach ($permisos as $permiso) {

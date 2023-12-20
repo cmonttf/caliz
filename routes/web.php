@@ -11,6 +11,8 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\TransbankController;
+use App\Http\Controllers\CobroController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -33,6 +35,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/', WelcomeController::class);
 Route::post('/welcome-show', [WelcomeController::class, 'show'])->name('welcome-show');
 //Route::post('/redirigir', [WelcomeController::class, 'redirigir']);
+Route::get('/iniciar_compra', [TransbankController::class, 'iniciar_compra'])->name('iniciar_compra');
+
 
 
 Auth::routes();
@@ -45,4 +49,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('import/import', [ImportController::class, 'showImportForm'])->name('import.import.form');
     Route::resource('pagos', PagoController::class);
     Route::get('/obtener-monto/{id}', [PaymentsController::class, 'obtenerMonto']);
+    Route::resource('cobros', CobroController::class);
+    Route::resource('profile', UserController::class);
 });

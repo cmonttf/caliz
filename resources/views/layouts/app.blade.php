@@ -40,12 +40,27 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
-<!-- DataTables JS -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<!-- DataTable -->
+<link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" rel="stylesheet">
 
-<!-- Custom DataTables JS -->
-<script src="/DataTables/datatables.js"></script>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+</script>
 
 
     <!-- Your Custom Scripts -->
@@ -116,18 +131,22 @@
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
         <div class="navbar-bg"></div>
+        <!--Encabezado-->
         <nav class="navbar navbar-expand-lg main-navbar">
             @include('layouts.header')
-
         </nav>
-        <div class="main-sidebar main-sidebar-postion">
+        <!--Barra de menu-->
+        <div class="main-sidebar main-sidebar-postion" id="sidebar-wrapper">
             @include('layouts.sidebar')
         </div>
         <!-- Main Content -->
-        <div class="main-content">
-            @yield('content')
+        <div class="col-md-12 mx-auto col-9">
+            <div class="main-content">
+                @yield('content')
+            </div>
         </div>
-        <footer class="main-footer">
+        <!--Pie de Pagina-->
+        <footer class="main-footer" id="main-footer">
             @include('layouts.footer')
         </footer>
     </div>
@@ -167,5 +186,78 @@
             }
         };
     }(jQuery));
+
 </script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var originalTexts = {};
+
+        // Obtener los textos originales y guardarlos con sus respectivos IDs
+        $("#sidebar-wrapper .nav-link").each(function(index) {
+            var id = "originalText" + index;
+            var originalText = $(this).find("span").text();
+            originalTexts[id] = originalText;
+            $(this).attr("data-original-text-id", id);
+        });
+
+        $("#toggleButton").on("click", function() {
+            $("#sidebar-wrapper").toggleClass("collapsed");
+
+            var isCollapsed = $("#sidebar-wrapper").hasClass("collapsed");
+
+            $("#sidebar-wrapper .nav-link").each(function() {
+                var originalTextID = $(this).attr("data-original-text-id");
+                var newText = isCollapsed ? "" : originalTexts[originalTextID];
+                $(this).find("span").text(newText);
+            });
+
+        });
+
+        // Ocultar automáticamente el menú en dispositivos móviles
+        function checkWindowSize() {
+            if ($(window).width() < 992) { // Puedes ajustar este valor según sea necesario
+                $("#sidebar-wrapper").addClass("collapsed");
+                $("#sidebar-wrapper .nav-link").each(function() {
+                    $(this).find("span").text("");
+                });
+            } else {
+                $("#sidebar-wrapper").removeClass("collapsed");
+                $("#sidebar-wrapper .nav-link").each(function() {
+                    var originalTextID = $(this).attr("data-original-text-id");
+                    var newText = originalTexts[originalTextID];
+                    $(this).find("span").text(newText);
+                });
+            }
+        }
+
+        // Ajusta el ancho y alineación del pie de página
+        if ($("#sidebar-wrapper").hasClass("collapsed")) {
+                $(".main-footer").addClass("text-center");
+            } else {
+                $(".main-footer").removeClass("text-center");
+            }
+
+        // Verificar el tamaño de la ventana al cargar y redimensionar
+        $(window).on("load resize", function() {
+            checkWindowSize();
+        });
+    });
+</script>
+
+<style>
+    /* Agrega una transición suave para el colapso del menú */
+    .main-sidebar {
+        transition: all 0.4s ease;
+    }
+
+    /* Define un ancho reducido para el menú colapsado */
+    .main-sidebar.collapsed {
+        width: 90px; /* Ancho deseado */
+    }
+</style>
+
+
 </html>

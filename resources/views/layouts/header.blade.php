@@ -1,7 +1,7 @@
 <form class="d-flex mr-auto" action="#">
     <ul class="navbar-nav mr-3">
         <li class="nav-item">
-            <a href="#" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#sidebar-wrapper">
+            <a href="#" class="nav-link" id="toggleButton">
                 <i class="material-icons">menu</i>
             </a>
         </li>
@@ -22,7 +22,7 @@
         @auth
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><h6 class="dropdown-header">Bienvenid@, {{$user->name}}</h6></li>
-                <li><a class="dropdown-item" href="profile.edit_profile" data-id="{{ \Auth::id() }}">
+                <li><a class="dropdown-item" href="{{ route('profile.edit', $user->id) }}" data-id="{{ \Auth::id() }}">
                     <i class="material-icons">person</i>Editar Perfil</a></li>
                 <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#changePasswordModal" href="#" data-id="{{ \Auth::id() }}"><i
                             class="material-icons">lock</i>Cambiar Contraseña</a></li>

@@ -4,7 +4,15 @@
 
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Pagos</h3>
+        @php
+            $total = 0;
+        @endphp
+        @foreach ($cobros as $co)
+            @php
+                $total += $co->monto;
+            @endphp
+        @endforeach
+        <h3 class="page__heading">{{ $total > 0 ? 'Pagos' : 'Sin deudas' }}</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -26,13 +34,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-
-                            </div>
-
-                            @php
-                                $total = 0;
-                            @endphp
                             @foreach ($cobros as $cobro)
                                 <div class="row">
                                     <div class="col-md-6">
@@ -53,10 +54,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                @php
-                                    $total += $cobro->monto
-                                @endphp
                             @endforeach
 
                             <div class="row">
@@ -75,12 +72,12 @@
 
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6" {{ $total == 0 ? 'hidden' : ''  }}>
                                     <div class="form-group">
-                                        <button type="submit" {{ $total == 0 ? 'disabled' : ''  }} class="btn btn-success btn-block">Pagar</button>
+                                        <button type="submit" class="btn btn-success btn-block">Pagar</button>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="{{ $total == 0 ? 'col-md-12' : 'col-md-6' }}">
                                     <div class="form-group">
                                         <a href="{{ url('/') }}" class="btn btn-secondary btn-block">Volver</a>
                                     </div>

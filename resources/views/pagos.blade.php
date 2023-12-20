@@ -40,23 +40,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        @if (Route::has('login'))
-                            @auth
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ url('/home') }}">Inicio</a>
-                                </li>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('login') }}">Iniciar sesión</a>
-                                </li>
-
-                                @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white" href="{{ route('register') }}">Registrar</a>
-                                    </li>
-                                @endif
-                            @endauth
-                        @endif
+                        <!--No borrar-->
                     </ul>
                 </div>
             </div>
