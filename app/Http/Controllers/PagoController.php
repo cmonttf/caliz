@@ -43,7 +43,9 @@ class PagoController extends Controller
     {
         // Mostrar detalles de un pago específico
         $person = Person::find($pago->user_id);
-        return view('pagos.show', compact('pago', 'person'));
+        $cobros = Cobro::where('user_id', $pago->user_id)->get();
+
+        return view('pagos.show', compact('pago', 'person', 'cobros'));
     }
 
     public function edit(Pago $pago)
@@ -72,32 +74,5 @@ class PagoController extends Controller
         $pago->delete();
 
         return redirect()->route('pagos.index')->with('success', 'Pago eliminado exitosamente.');
-    }
-
-    public function obtenerDatosGrafico() {
-
-        $cobros = Cobro::all();
-        //Pagados v/s Adeudados
-        $pagados = 0;
-        $adeudados = 0;
-        $anio = date('Y');
-        $mes = date('m');
-
-        foreach ($cobros as $cobro) {
-            if($anio == $cobro->anio && $mes == $cobro->mes){
-                if($cobro->pagado == 1){
-                    $pagados += $cobro->monto;
-                }else{
-                    $adeudados += $cobro->monto;
-                }
-            }
-        }
-        $labelsJson = ['Pagado', 'Adeudado'];
-        $dataJson = [$pagados, $adeudados];
-
-        return response()->json([
-            'labels' => $labelsJson ,
-            'data' => $dataJson,
-        ]);
     }
 }

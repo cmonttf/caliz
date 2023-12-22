@@ -37,22 +37,6 @@
                                             <label for="">Estado:</label>
                                             <input class="form-control" type="text" value="{{ $cobro->pagado == 0 ? 'Adeuda' : 'Pagado' }}" readonly>
                                         </div>
-                                        @foreach ($pago as $p)
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="form-group" {{ $cobro->pagado == 0 ? 'hidden' : '' }}>
-                                                        <label for="">N° de Pago:</label>
-                                                        <input class="form-control" type="text" value="{{ $cobro->pagado == 0 ? '' : $p->id }}" readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-group" {{ $cobro->pagado == 0 ? 'hidden' : '' }}>
-                                                        <label for="">Fecha de Pago:</label>
-                                                        <input class="form-control" type="text" value="{{ $cobro->pagado == 0 ? '' : $p->updated_at }}" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
                                         <div class="form-group">
                                             <label for="">Fecha de creación:</label>
                                             <input class="form-control" type="text" value="{{ $cobro->created_at }}" readonly>

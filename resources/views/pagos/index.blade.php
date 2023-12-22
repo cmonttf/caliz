@@ -21,7 +21,7 @@
                                 </div>
                             @endif
 
-                            <table id="myTable" class="table table-striped mt-2">
+                            <table id="miTabla" class="table table-striped mt-2">
                                 <thead style="background-color: #6777ef;">
                                     <tr>
                                         <th style="color: #ffff;">ID</th>

@@ -17,7 +17,7 @@
                             <a class="btn btn-success" href="{{ route('import.import.form') }}">Importar</a>
                             @endcan
 
-                            <table id="myTable" class="table table-striped mt-2">
+                            <table id="miTabla" class="table table-striped mt-2">
                                 <thead style="background-color: #6777ef;">
                                     <th style="display:none; color: #ffff;">N°</th>
                                     <th style="color: #ffff;">Nombre</th>

@@ -69,9 +69,8 @@ class CobroController extends Controller
     {
         $cobro = Cobro::find($id);
         $persona = Person::find($cobro->user_id);
-        $pago = Pago::where('user_id', $cobro->user_id)->where('status', 2)->get();
 
-        return view('cobros.show', compact('cobro', 'persona', 'pago'));
+        return view('cobros.show', compact('cobro', 'persona'));
     }
 
     /**

@@ -53,30 +53,33 @@
             return $date->format('Y-m');
         })->unique();
 
-        // Tomar los últimos 12 meses disponibles
-        $mesesParaMostrar = $mesesDisponibles->take(-12)->reverse();
+        // Obtener los últimos 12 meses incluyendo el mes actual
+        $mesesParaMostrar = collect([]);
+        for ($i = 0; $i < 13; $i++) {
+            $mesesParaMostrar->push(now()->subMonths(12 - $i)->format('Y-m'));
+        }
 
-        $mesesChart = []; // Cambio de nombre de variable
+        $mesesChart = [];
         $total = [];
 
         // Inicializar el array de totales con ceros para cada mes disponible
         foreach ($mesesParaMostrar as $mes) {
-            $mesesChart[] = $mes; // Cambio de nombre de variable
+            $mesesChart[] = $mes;
             $total[$mes] = 0;
         }
 
         // Contar la cantidad de pagos para cada mes
         foreach ($cobros as $cobro) {
             $mesCobro = $cobro->created_at->format('Y-m');
-            if (!empty($mesCobro) && array_key_exists($mesCobro, $total)) {
+            if (array_key_exists($mesCobro, $total)) {
                 if ($cobro->pagado == 1) {
                     $total[$mesCobro] += $cobro->monto;
                 }
             }
         }
 
-        $meses = json_encode($mesesChart); // Actualización del nombre de la variable
-        $data = json_encode(array_values($total));
+        $mesesJson = json_encode(array_values($mesesChart));
+        $pagosJson = json_encode(array_values($total));
 
     @endphp
     <section class="section">
@@ -92,7 +95,7 @@
                             <div class="container mt-4">
                                 <div class="row align-items-stretch">
                                     <div class="col-xs-4 col-sm-4 col-md-4">
-                                        <div class="card h-100" style="background-color: #4ADE26; color: white; padding: 10px;">
+                                        <div class="card h-100" style="background-color: #78f759; color: white; padding: 10px;">
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Pagados v/s Adeudados</h5>
                                                 <div class="flex-grow-1">
@@ -102,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-8 col-sm-8 col-md-8">
-                                        <div class="card h-100" style="background-color: #de8826; color: white; padding: 10px;">
+                                        <div class="card h-100" style="background-color: #fda744; color: white; padding: 10px;">
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Cantidad por Montos</h5>
                                                 <div class="flex-grow-1">
@@ -116,7 +119,7 @@
                             <div class="container mt-4">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="card" style="background-color: #2651de; color: white; padding: 10px;">
+                                        <div class="card" style="background-color: #e5f055; color: white; padding: 10px;">
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Pagos en el Tiempo</h5>
                                                 <div class="flex-grow-1">
@@ -166,22 +169,6 @@
             }
         });
 
-        function actualizarGrafico() {
-            fetch('/grafico/obtener-nuevos-datos') // Ruta hacia tu endpoint para obtener datos actualizados
-                .then(response => response.json())
-                .then(data => {
-                    // Actualizar los datos del gráfico con los datos obtenidos
-                    myPieChart.data.labels = data.labels;
-                    myPieChart.data.datasets[0].data = data.data;
-                    myPieChart.update();
-                })
-                .catch(error => {
-                    console.error('Error al obtener los datos:', error);
-                });
-        }
-
-        actualizarGrafico();
-
     </script>
 
     <script>
@@ -211,24 +198,39 @@
     </script>
 
     <script>
-        const tiempo = document.getElementById('pagos_tiempo');
+        const tiempo = document.querySelector('#pagos_tiempo');
 
-        const labels = {{ $meses }};
-        const data = {{ $data }};
+        const meses = {!! $mesesJson !!};
+
+        const datos = {{ $pagosJson }};
+
+        console.log('Meses: ',meses);
+        console.log('Pagos: ',datos);
 
         new Chart(tiempo, {
             type: 'line',
             data: {
-                labels: labels,
+                labels: meses,
                 datasets: [{
                     label: 'Pagado',
-                    data: data,
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
+                    data: datos,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                },
             }
         });
+
     </script>
+
 @endsection
 

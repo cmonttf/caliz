@@ -15,7 +15,7 @@
                             @endcan
 
 
-                            <table id="myTable" class="table table-striped mt-2">
+                            <table id="miTabla" class="table table-striped mt-2">
                                 <thead style="background-color: #6777ef;">
                                     <th style="display: none;">ID</th>
                                     <th style="color: #ffff;">Nombre</th>
