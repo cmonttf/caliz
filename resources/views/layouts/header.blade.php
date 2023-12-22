@@ -24,8 +24,6 @@
                 <li><h6 class="dropdown-header">Bienvenid@, {{$user->name}}</h6></li>
                 <li><a class="dropdown-item" href="{{ route('profile.edit', $user->id) }}" data-id="{{ \Auth::id() }}">
                     <i class="material-icons">person</i>Editar Perfil</a></li>
-                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#changePasswordModal" href="#" data-id="{{ \Auth::id() }}"><i
-                            class="material-icons">lock</i>Cambiar Contraseña</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item text-danger" href="{{ url('logout') }}"
                    onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">

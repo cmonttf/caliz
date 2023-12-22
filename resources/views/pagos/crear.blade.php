@@ -94,5 +94,9 @@
                 });
             });
         });
+
+        // Llamar a la función actualizarGrafico() cuando se efectúe un pago o evento relevante
+        // Por ejemplo, podrías llamar a esta función después de realizar una acción de pago
+        actualizarGrafico();
     </script>
 @endsection

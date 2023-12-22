@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use App\Models\User;
+use App\Models\Pago;
+use App\Models\Cobro;
 
 class HomeController extends Controller
 {
@@ -27,7 +29,8 @@ class HomeController extends Controller
     {
         $personas = Person::all();
         $usuario = User::all();
-        return view('home', compact('personas', 'usuario'));
+        $cobros = Cobro::all();
+        return view('home', compact('personas', 'usuario', 'cobros'));
     }
 
     public function show($id){

@@ -41,6 +41,23 @@
     </div>
 </div>
 
-
+<script>
+    function actualizarGrafico() {
+            fetch('/grafico/obtener-nuevos-datos') // Ruta hacia tu endpoint para obtener datos actualizados
+                .then(response => response.json())
+                .then(data => {
+                    // Actualizar los datos del gráfico con los datos obtenidos
+                    myPieChart.data.labels = data.labels;
+                    myPieChart.data.datasets[0].data = data.data;
+                    myPieChart.update();
+                })
+                .catch(error => {
+                    console.error('Error al obtener los datos:', error);
+                });
+        }
+    // Llamar a la función actualizarGrafico() cuando se efectúe un pago o evento relevante
+    // Por ejemplo, podrías llamar a esta función después de realizar una acción de pago
+    actualizarGrafico();
+</script>
 
 @endsection

@@ -11,7 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js');
+ mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+    ])
+    .scripts([
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+    ], 'public/js/app.js')
+    .sass('resources/sass/app.scss', 'public/css');
+
+
 mix.styles(['resources/js/app.js'], 'public/css/app.css').version();
 
 mix.styles([

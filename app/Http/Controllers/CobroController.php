@@ -109,6 +109,6 @@ class CobroController extends Controller
 
         $cobro->delete();
 
-        return redirect()->route('cobros.index')->with('alert', 'Cobro eliminado exitosamente.');
+        return view('cobros.index')->with('alert', 'Cobro eliminado exitosamente.');
     }
 }

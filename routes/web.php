@@ -51,4 +51,5 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/obtener-monto/{id}', [PaymentsController::class, 'obtenerMonto']);
     Route::resource('cobros', CobroController::class);
     Route::resource('profile', UserController::class);
+    Route::get('/grafico/obtener-nuevos-datos', 'PagoController@obtenerDatosGrafico');
 });

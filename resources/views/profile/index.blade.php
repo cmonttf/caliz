@@ -23,13 +23,13 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <label for="">Nombre:</label>
-                                        {!! Form::text("name", $user->name, array("class"=> "form-control")) !!}
+                                        {!! Form::text("name", $user->name, array("class"=> "form-control", "readonly")) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-4 col-md-5">
                                     <div class="form-group">
                                         <label for="">Correo:</label>
-                                        {!! Form::text("name", $user->email, array("class"=> "form-control")) !!}
+                                        {!! Form::text("name", $user->email, array("class"=> "form-control", "readonly")) !!}
                                     </div>
                                 </div>
                             </div>

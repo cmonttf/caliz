@@ -20,11 +20,6 @@
 <!-- Select2 CSS -->
 <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet">
 
-<!-- DataTables CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-
-<!-- Custom DataTables CSS -->
-<link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
 
 <!-- Google Fonts -->
 <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
@@ -40,83 +35,22 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
-<!-- DataTable -->
-<link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" rel="stylesheet">
+<!-- jQuery -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+<!-- DataTables -->
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
 
 <script>
     $(document).ready( function () {
         $('#myTable').DataTable();
-    } );
+    });
 </script>
 
-
-    <!-- Your Custom Scripts -->
-    <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable({
-                "language": {
-                    "decimal": ",",
-                    "thousands": ".",
-                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "infoPostFix": "",
-                    "infoFiltered": "(Filtrado de un total de _MAX_ registros)",
-                    "loadingRecords": "Cargando...",
-                    "lengthMenu": "Mostrar _MENU_ registros",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    },
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "searchPlaceholder": "Término de búsqueda",
-                    "zeroRecords": "No se encontraron resultados",
-                    "emptyTable": "Ningún dato disponible en esta tabla",
-                    "aria": {
-                        "sortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sortDescending": ": Activar para ordenar la columna de manera descendente"
-                    },
-                    // solo funciona para los botones incorporados, no para los botones personalizados
-                    "buttons": {
-                        "create": "Nuevo",
-                        "edit": "Cambiar",
-                        "remove": "Borrar",
-                        "copy": "Copiar",
-                        "csv": "Fichero CSV",
-                        "excel": "Tabla Excel",
-                        "pdf": "Documento PDF",
-                        "print": "Imprimir",
-                        "colvis": "Visibilidad columnas",
-                        "collection": "Colección",
-                        "upload": "Seleccione fichero...."
-                    },
-                    "select": {
-                        "rows": {
-                            _: '%d filas seleccionadas',
-                            0: 'clic fila para seleccionar',
-                            1: 'una fila seleccionada'
-                        }
-                    }
-                }
-            });
-        });
-
-    </script>
 
 @yield('page_css')
 <!-- Template CSS -->
@@ -152,8 +86,6 @@
     </div>
 </div>
 
-@include('profile.change_password')
-@include('profile.edit_profile')
 
 </body>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
