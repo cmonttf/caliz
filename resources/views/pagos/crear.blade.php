@@ -37,11 +37,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="col-12">
                                     <div class="form-group">
-                                        <label>Monto</label>
-                                        <input type="text" class="form-control" name="monto" id="montoInput">
-                                        <input type="hidden" name="monto_oculto" id="montoOculto">
+                                        <label for="montoInput" class="form-label">Total</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="text" class="form-control" name="monto" id="montoInput" placeholder="Enter total">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -52,7 +54,7 @@
                                     </div>
                                 </div>
 
-                                <input type="text" hidden name="metodo" value="WEB">
+                                <input type="text" hidden name="metodo" value="MANUAL">
 
                                 <input type="text" hidden name="gestor" value="{{ Auth::user()->name }}">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -75,28 +77,19 @@
             const montoInput = $('#montoInput');
 
             userSelect.on('change', function () {
-                console.log('Cambio de usuario detectado.');
-
                 const selectedUserId = $(this).val();
-                console.log(selectedUserId);
 
                 $.ajax({
                     url: '/obtener-monto/' + selectedUserId,
                     type: 'GET',
                     success: function (data) {
-                        console.log('Success:', data);
-                        montoInput.val(data.monto);
+                        montoInput.val(data.monto_total_pendiente);
                     },
                     error: function (xhr, status, error) {
                         console.error('Error:', xhr.responseText);
-                        // Puedes mostrar un mensaje de error al usuario aquí
                     }
                 });
             });
         });
-
-        // Llamar a la función actualizarGrafico() cuando se efectúe un pago o evento relevante
-        // Por ejemplo, podrías llamar a esta función después de realizar una acción de pago
-        actualizarGrafico();
     </script>
 @endsection

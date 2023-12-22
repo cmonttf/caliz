@@ -21,7 +21,8 @@ class PagoController extends Controller
     public function create()
     {
         $persons = Person::all();
-        return view('pagos.crear', compact('persons'));
+        $cobros = Cobro::all();
+        return view('pagos.crear', compact('persons', 'cobros'));
     }
 
     public function store(Request $request)
@@ -31,6 +32,13 @@ class PagoController extends Controller
             'monto' => 'required|numeric',
             'fecha_pago' => 'required|date',
         ]);
+
+        $cobros = Cobro::where('user_id', $request->user_id)->where('pagado', 0)->get();
+
+        for($i=0;$i<count($cobros);$i++){
+            $cobros[$i]->pagado = 1;
+            $cobros[$i]->update();
+        }
 
         $data = $request->all();
         $data['status'] = 2; // Establecer el estado como 2
