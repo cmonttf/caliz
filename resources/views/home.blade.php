@@ -204,9 +204,6 @@
 
         const datos = {{ $pagosJson }};
 
-        console.log('Meses: ',meses);
-        console.log('Pagos: ',datos);
-
         new Chart(tiempo, {
             type: 'line',
             data: {

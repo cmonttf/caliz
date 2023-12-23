@@ -11,28 +11,45 @@
 <!-- Google Fonts -->
 <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+<!-- DataTables Bootstrap 5 CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
 <!-- Custom CSS -->
 <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('web/css/components.css') }}">
 
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- Bootstrap JS and Popper.js -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<!-- DataTables JS -->
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+<!-- DataTables Bootstrap 5 JS -->
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 
 
-<script>
-    $(document).ready(function() {
-        new DataTable('#example');
-    });
-</script>
+<style>
+    /* Agrega una transición suave para el colapso del menú */
+    .main-sidebar {
+        transition: all 0.4s ease;
+    }
+
+    /* Define un ancho reducido para el menú colapsado */
+    .main-sidebar.collapsed {
+        width: 90px; /* Ancho deseado */
+    }
+</style>
 
 
 @yield('page_css')
@@ -57,6 +74,8 @@
             @include('layouts.sidebar')
         </div>
         <!-- Main Content -->
+
+
         <div class="col-md-12 mx-auto col-9">
             <div class="main-content">
                 @yield('content')
@@ -70,7 +89,19 @@
 </div>
 
 
+
+
 </body>
+
+<script>
+    $(document).ready(function() {
+        $('#miTabla').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+            }
+        });
+    });
+</script>
 
 <!-- Template JS Files -->
 <script src="{{ asset('web/js/stisla.js') }}"></script>
@@ -95,7 +126,7 @@
 
 </script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
 <script>
     $(document).ready(function() {
@@ -153,17 +184,9 @@
     });
 </script>
 
-<style>
-    /* Agrega una transición suave para el colapso del menú */
-    .main-sidebar {
-        transition: all 0.4s ease;
-    }
 
-    /* Define un ancho reducido para el menú colapsado */
-    .main-sidebar.collapsed {
-        width: 90px; /* Ancho deseado */
-    }
-</style>
+
+
 
 
 </html>

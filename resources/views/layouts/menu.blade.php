@@ -30,5 +30,4 @@
             <i class="material-icons">request_quote</i><span>Cobros</span>
         </a>
     @endcan
-
 </li>
