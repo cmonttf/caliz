@@ -16,7 +16,6 @@ class PersonImport implements ToModel
             'telefono' => $row[3],
             'correo' => $row[4],
             'monto' => $row[5],
-            'medio_de_pago' => $row[6],
         ]);
     }
 }

@@ -49,18 +49,10 @@
                                                     <input class="form-control" type="text" value="{{ $person->correo }}" readonly>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="monto">Monto a pagar:</label>
                                                     <input class="form-control" type="text" value="${{ $person->monto }}" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="medio_de_pago">Medio de pago:</label>
-                                                    <input class="form-control" type="text" value="{{ $person->medio_de_pago }}" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,9 +89,9 @@
                                                 <thead style="background-color: #6777ef;">
                                                     <tr>
                                                         <th style="color: #ffff;">N°</th>
-                                                        <th style="color: #ffff;">N° Pago</th>
-                                                        <th style="color: #ffff;">Monto</th>
-                                                        <th style="color: #ffff;">Fecha de pago</th>
+                                                        <th style="color: #ffff;">N° Orden de Pago</th>
+                                                        <th style="color: #ffff;">Monto Pagado</th>
+                                                        <th style="color: #ffff;">Fecha de Pago</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -109,7 +101,7 @@
                                                     @foreach ($pagos as $p)
                                                         <tr>
                                                             <td>{{ $i }}</td>
-                                                            <td>{{$p->id}}</td>
+                                                            <td>#{{$p->id}}</td>
                                                             <td>${{$p->monto}}</td>
                                                             <td>{{ $p->fecha_pago }}</td>
                                                         </tr>

@@ -21,7 +21,7 @@
                             @endif
 
 
-                            <table id="myTable" class="table table-striped mt-2">
+                            <table id="miTabla" class="table table-striped mt-2">
                                 <thead style="background-color: #6777ef;">
                                     <th style="color: #ffff;">N° Cobro</th>
                                     <th style="color: #ffff;">Nombre</th>
@@ -41,7 +41,6 @@
                                                 }
 
                                             @endphp
-                                            <td style="display: none"></td>
                                             <td>{{ $cobro->id }}</td>
                                             <td>{{ $nombre }}</td>
                                             <td>{{ $cobro->mes }}</td>

@@ -15,7 +15,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="">N° Orden de Pago:</label>
-                                            <input class="form-control" type="text" value="{{ $pago->id }}" readonly>
+                                            <input class="form-control" type="text" value="#{{ $pago->id }}" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="">Nombre:</label>
@@ -41,8 +41,8 @@
                                             <label for="">Estado:</label>
                                             <input class="form-control" type="text" value="{{ $pago->status == 2 ? 'Aprobado' : 'Rechazado' }}" readonly>
                                         </div>
-                                        <div class="row">
-                                            @foreach ($cobros as $cobro)
+                                        @foreach ($cobros as $cobro)
+                                            <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="">N° de cobro:</label>
@@ -55,8 +55,8 @@
                                                         <input class="form-control" type="text" value="{{ $cobro->mes }}-{{ $cobro->anio }}" readonly>
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        </div>
+                                            </div>
+                                        @endforeach
                                         <div class="form-group">
                                             <label for="">Fecha de ingreso:</label>
                                             <input class="form-control" type="text" value="{{ $pago->created_at }}" readonly>

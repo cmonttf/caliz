@@ -75,6 +75,18 @@
         $(function () {
             const userSelect = $('#userSelect');
             const montoInput = $('#montoInput');
+            const guardarBtn = $('button[type="submit"]'); // Selección del botón de guardar
+
+            // Función para deshabilitar o habilitar el botón según el valor del monto
+            function toggleGuardarBtn() {
+                const monto = parseFloat(montoInput.val());
+
+                if (monto === 0 || isNaN(monto)) {
+                    guardarBtn.prop('disabled', true); // Deshabilitar botón si el monto es 0 o no es un número
+                } else {
+                    guardarBtn.prop('disabled', false); // Habilitar botón si el monto es diferente de 0
+                }
+            }
 
             userSelect.on('change', function () {
                 const selectedUserId = $(this).val();
@@ -84,6 +96,7 @@
                     type: 'GET',
                     success: function (data) {
                         montoInput.val(data.monto_total_pendiente);
+                        toggleGuardarBtn(); // Llamar a la función para comprobar el estado del botón
                     },
                     error: function (xhr, status, error) {
                         console.error('Error:', xhr.responseText);

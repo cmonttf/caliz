@@ -81,6 +81,23 @@
         $mesesJson = json_encode(array_values($mesesChart));
         $pagosJson = json_encode(array_values($total));
 
+        //Tipos de pagos
+
+        $electronico = 0;
+        $manual = 0;
+        foreach ($pagos as $pago) {
+            if($pago->metodo == 'Electrónico'){
+                $electronico += $pago->monto;
+            }else{
+                if($pago->metodo == 'MANUAL'){
+                    $manual += $pago->monto;
+                }
+            }
+        }
+
+        $elec = json_encode($electronico);
+        $manu = json_encode($manual);
+
     @endphp
     <section class="section">
         <div class="section-header">
@@ -99,7 +116,7 @@
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Pagados v/s Adeudados</h5>
                                                 <div class="flex-grow-1">
-                                                    <canvas id="pagado"></canvas>
+                                                    <canvas id="pagado" style="height: 100%;"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +126,7 @@
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Cantidad por Montos</h5>
                                                 <div class="flex-grow-1">
-                                                    <canvas id="cantidad"></canvas>
+                                                    <canvas id="cantidad" style="height: 100%;"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -117,13 +134,23 @@
                                 </div>
                             </div>
                             <div class="container mt-4">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="card" style="background-color: #e5f055; color: white; padding: 10px;">
+                                <div class="row d-flex">
+                                    <div class="col-xs-8 col-sm-8 col-md-8">
+                                        <div class="card h-100" style="background-color: #e5f055; color: white; padding: 10px;">
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Pagos en el Tiempo</h5>
                                                 <div class="flex-grow-1">
-                                                    <canvas id="pagos_tiempo"></canvas>
+                                                    <canvas id="pagos_tiempo" style="height: 100%;"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                        <div class="card h-100" style="background-color: #b163e6; color: white; padding: 10px;">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title text-center">Tipos de pago</h5>
+                                                <div class="flex-grow-1">
+                                                    <canvas id="tipos_pagos" style="height: 100%;"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -228,6 +255,34 @@
         });
 
     </script>
+
+<script>
+    const tipos = document.getElementById('tipos_pagos');
+
+    const tip = ['ELECTRONICO', 'MANUAL'];
+    const datas = [{{ $elec }}, {{ $manu }}];
+
+    console.log(datas);
+
+    new Chart(tipos, {
+        type: 'bar',
+        data: {
+            labels: tip,
+            datasets: [{
+                label: 'Cantidad',
+                data: datas,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 
 @endsection
 

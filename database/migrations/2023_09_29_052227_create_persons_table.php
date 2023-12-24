@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('correo');
             $table->integer('monto');
-            $table->string('medio_de_pago');
             $table->timestamps();
         });
     }

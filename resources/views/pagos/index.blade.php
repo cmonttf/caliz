@@ -24,7 +24,7 @@
                             <table id="miTabla" class="table table-striped mt-2">
                                 <thead style="background-color: #6777ef;">
                                     <tr>
-                                        <th style="color: #ffff;">ID</th>
+                                        <th style="color: #ffff;">N° Orden de Pago</th>
                                         <th style="color: #ffff;">Nombre</th>
                                         <th style="color: #ffff;">Monto</th>
                                         <th style="color: #ffff;">Fecha de Pago</th>
@@ -44,7 +44,7 @@
                                                 }
 
                                             @endphp
-                                            <td>{{ $pago->id }}</td>
+                                            <td>#{{ $pago->id }}</td>
                                             <td>{{ $nombre }}</td>
                                             <td>${{ $pago->monto }}</td>
                                             <td>{{ $pago->fecha_pago }}</td>

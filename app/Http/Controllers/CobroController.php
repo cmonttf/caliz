@@ -53,7 +53,7 @@ class CobroController extends Controller
             $cobro->user_id = $request->user_id;
             $cobro->save();
 
-            return view('cobros.index')->with('success', 'Cobro creado satisfactoriamente.');
+            return redirect()->route('cobros.index');
         }
 
 
@@ -108,6 +108,6 @@ class CobroController extends Controller
 
         $cobro->delete();
 
-        return view('cobros.index')->with('alert', 'Cobro eliminado exitosamente.');
+        return redirect()->route('cobros.index');
     }
 }

@@ -30,7 +30,8 @@ class HomeController extends Controller
         $personas = Person::all();
         $usuario = User::all();
         $cobros = Cobro::all();
-        return view('home', compact('personas', 'usuario', 'cobros'));
+        $pagos = Pago::all();
+        return view('home', compact('personas', 'usuario', 'cobros', 'pagos'));
     }
 
     public function show($id){
