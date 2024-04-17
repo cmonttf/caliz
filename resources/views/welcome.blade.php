@@ -82,7 +82,7 @@
                                             @endforeach
                                         </select>
                                         <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="submit" id="searchButton">Buscar</button>
+                                            <button disabled class="btn btn-outline-secondary" type="submit" id="searchButton">Buscar</button>
                                         </div>
                                     </div>
                                 </form>
