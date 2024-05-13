@@ -7,6 +7,7 @@ use App\Models\Person;
 use App\Models\User;
 use App\Models\Pago;
 use App\Models\Cobro;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -31,7 +32,8 @@ class HomeController extends Controller
         $usuario = User::all();
         $cobros = Cobro::all();
         $pagos = Pago::all();
-        return view('home', compact('personas', 'usuario', 'cobros', 'pagos'));
+        $fecha_actual = Carbon::now();
+        return view('home', compact('personas', 'usuario', 'cobros', 'pagos', 'fecha_actual'));
     }
 
     public function show($id){

@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('persons', function (Blueprint $table) {
+        Schema::create('ip_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('nombres');
-            $table->string('apellidos')->nullable();
-            $table->string('direccion')->nullable();
-            $table->string('telefono')->nullable();
-            $table->string('correo')->nullable();
-            $table->integer('monto')->nullable();
-            $table->string('medio_de_pago')->nullable();
+            $table->string('ip_address');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persons');
+        Schema::dropIfExists('ip_logs');
     }
 };

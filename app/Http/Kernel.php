@@ -73,6 +73,7 @@ class Kernel extends HttpKernel
     protected function schedule(Schedule $schedule){
         $schedule->command('payments:delete')->everyMinute();
         $schedule->command('cobros:generar')->monthly();
+        $schedule->command('cobros:generarNuevo');
     }
 
 }

@@ -10,7 +10,7 @@ class Pago extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'monto', 'fecha_pago', 'metodo', 'gestor', 'status',
+        'user_id', 'monto', 'fecha_pago', 'metodo', 'gestor', 'status', 'talonario',
     ];
 
     // Relación con el modelo User

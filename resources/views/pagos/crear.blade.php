@@ -47,6 +47,13 @@
                                     </div>
                                 </div>
 
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="talonario" class="form-label">Talonario</label>
+                                        <input type="text" class="form-control" name="talonario" placeholder="N° Talonario">
+                                    </div>
+                                </div>
+
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <label>Fecha</label>

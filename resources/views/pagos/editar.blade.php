@@ -41,6 +41,13 @@
 
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
+                                            <label for="direccion">Talonario:</label>
+                                            {!! Form::text('talonario', $pago->talonario, array('class' => 'form-control')) !!}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
                                             <label for="telefono">Fecha de pago:</label>
                                             {!! Form::text('fecha_pago', $pago->fecha_pago, array('class' => 'form-control', 'readonly')) !!}
                                         </div>
