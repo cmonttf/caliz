@@ -66,13 +66,13 @@
 
         <div class="container-fluid bg-light pt-4 pb-4">
             <div class="container mt-4">
-                <div class="jumbotron">
-                    <p style="font-size: 100px; font-weight: bold;">Bienvenidos al Pago del 1%</p>
+                <div class="jumbotron text-center">
+                    <p style="font-size: 3rem; font-weight: bold;">Bienvenidos al Pago del 1%</p>
                     <span>Este dinero va directamente a las arcas de nuestra parroquia, por lo tanto es vital tu aporte mensual.</span>
                     <div class="container mt-5">
                         <h2 class="text-center">Buscador de Nombres</h2>
-                        <div class="row">
-                            <div class="col-md-6 offset-md-3">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
                                 <form action="{{ route('welcome-show') }}" method="POST">
                                     @csrf
                                     <div class="input-group mb-3">
@@ -92,12 +92,13 @@
                 </div>
             </div>
         </div>
-
-        <footer class="bg-dark text-white py-4" style="margin-top: auto">
+        
+        <footer class="bg-dark text-white py-4">
             <div class="container text-center">
                 <p>&copy; {{ date('Y') }} Todos los derechos reservados.</p>
             </div>
         </footer>
+        
         <!-- Bootstrap JS (opcional, si lo necesitas) -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

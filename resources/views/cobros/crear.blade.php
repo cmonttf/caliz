@@ -28,17 +28,32 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <label>Mes</label>
-                                        <select name="mes" class="form-control">
+                                        <label for="mes">Mes</label>
+                                        <select name="mes" id="mes" class="form-control">
                                             <option value="">Seleccione mes</option>
                                             @php
-                                                for ($i=0; $i < 12; $i++) {
-                                                    echo "<option value='".($i+1)."'>".($i+1)."</option>";
+                                                $meses = array(
+                                                    1 => 'Enero',
+                                                    2 => 'Febrero',
+                                                    3 => 'Marzo',
+                                                    4 => 'Abril',
+                                                    5 => 'Mayo',
+                                                    6 => 'Junio',
+                                                    7 => 'Julio',
+                                                    8 => 'Agosto',
+                                                    9 => 'Septiembre',
+                                                    10 => 'Octubre',
+                                                    11 => 'Noviembre',
+                                                    12 => 'Diciembre'
+                                                );
+                                                foreach ($meses as $numero => $nombre) {
+                                                    echo "<option value='$numero'>$nombre</option>";
                                                 }
                                             @endphp
                                         </select>
                                     </div>
                                 </div>
+                                
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
@@ -49,14 +64,15 @@
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <label>Persona</label>
-                                        <select name="user_id" class="form-control" id="userSelect">
+                                        <label for="userSelect">Persona</label>
+                                        <select name="user_id" class="form-control mi-selector" id="userSelect">
                                             @foreach ($personas as $persona)
                                                 <option value="{{ $persona->id }}">{{ $persona->nombres }} {{ $persona->apellidos }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">

@@ -109,9 +109,9 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title text-center">Contenido</h3>
-                            <div class="container mt-4">
+                            <div class="container">
                                 <div class="row align-items-stretch">
-                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <div class="col-sm-4 form-group">
                                         <div class="card h-100" style="background-color: #78f759; color: white; padding: 10px;">
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Pagados v/s Adeudados</h5>
@@ -121,7 +121,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-8 col-sm-8 col-md-8">
+                                    <div class="col-sm-8 form-group">
                                         <div class="card h-100" style="background-color: #fda744; color: white; padding: 10px;">
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Cantidad por Montos</h5>
@@ -133,9 +133,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container mt-4">
+                            <div class="container">
                                 <div class="row d-flex">
-                                    <div class="col-xs-8 col-sm-8 col-md-8">
+                                    <div class="col-sm-8 form-group">
                                         <div class="card h-100" style="background-color: #e5f055; color: white; padding: 10px;">
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Pagos en el Tiempo</h5>
@@ -145,7 +145,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <div class="col-sm-4 form-group">
                                         <div class="card h-100" style="background-color: #b163e6; color: white; padding: 10px;">
                                             <div class="card-body d-flex flex-column">
                                                 <h5 class="card-title text-center">Tipos de pago</h5>
